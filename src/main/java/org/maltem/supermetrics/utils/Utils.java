@@ -1,4 +1,4 @@
-package org.maltem.supermetrics.api;
+package org.maltem.supermetrics.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

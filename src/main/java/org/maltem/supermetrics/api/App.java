@@ -1,9 +1,12 @@
 package org.maltem.supermetrics.api;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.maltem.supermetrics.utils.Consts;
+import org.maltem.supermetrics.utils.Utils;
 
 /**
  * Hello world!
@@ -16,15 +19,33 @@ public class App
     { 
     	ApiCaller apiCaller = new ApiCaller() ;
     	CsvWriter csvWriter = new CsvWriter() ;
+    	String startDate = null;
+    	String endDate = null;
     	
-    	// Setting URL API 
-        /**
-        String startDate = args[0]; 
-        String endDate = args[1];
+    	/**
+    	 * Getting the app starting mode and settings dates accordingly
+    	 */
+    	String startingMode = args[0];
+    	switch (startingMode) {
+    	case Consts.INIT:
+    		startDate = Consts.API_MIN_STARTDATE;
+    		endDate = Consts.API_SDF.format(LocalDate.now());
+    		break;
+    	case Consts.RECURRENT:
+    		startDate = Consts.API_SDF.format(LocalDate.now());
+    		endDate = Consts.API_SDF.format(LocalDate.now());
+    		break;
+    	case Consts.CUSTOM:
+    		startDate = args[1];
+    		endDate = args[2];
+    		break;
+    	default: 
+    		throw new RuntimeException(Consts.ERROR_STARTMODE_NOT_FOUND);
+    	}
+    	
+    	// Setting API's Url
+        String apiUrl = String.format(Consts.API_URL, startDate, endDate);
         
-        String apiUrl = String.format("", startDate, endDate);
-        **/
-        String apiUrl = "https://supermetrics.com/api/q/smqB9NCAvnAcw4qkcmujBENhuBYl47ds5YGHHMJCjXWDICVZgU6LB1jviwTIlmoHqlyZz2wnU";
  	   	
         // Calling API 
         HttpResponse response = apiCaller.getData(apiUrl); 
