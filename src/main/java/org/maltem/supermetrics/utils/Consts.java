@@ -21,7 +21,7 @@ public final class Consts {
 	/**
 	 * API URL
 	 */
-	public static final String API_URL = "";
+	public static final String API_URL = "https://supermetrics.com/api/v1/getData?metrics=Clicks%2CCost&dimensions=Date&maxResults=50&dateRangeType=custom&start-date=startDateReplace&end-date=endDateReplace&profiles=%5B%7B%22ID%22%3A%229217631823%22%2C%22name%22%3A%229217631823%22%7D%5D&dataSource=AW&dsUser=9217631823&apiKey=api_LEyB36lHn0dMmmOZ5_ALiCu5XLXaE9cnfqU0eRHe0568nSxiKs_jqwAF2H9KNqAvpfXrJVw_zPFr7NUUPX3_k23akXVWbcPSJPLQ&targetAppFormat=qlik";
 	
 	
 	/**

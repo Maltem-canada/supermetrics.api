@@ -3,6 +3,8 @@ package org.maltem.supermetrics.api;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.time.Instant;
+import java.time.LocalTime;
 
 public class CsvWriter {
 
@@ -26,5 +28,17 @@ public class CsvWriter {
 	   	
 	   	pw.write(sb.toString());
 	   	pw.close();
+	}
+	
+	/** 
+	 * Generates a file name using the app starting mode and a timestamp 
+	 * @param appMode app starting mode 
+	 * @return file name
+	 */
+	public String generateFileName(String appMode) {
+		StringBuilder sb = new StringBuilder(appMode);
+		sb.append("_");
+		sb.append(Instant.now().toString());
+		return sb.toString();
 	}
 }
